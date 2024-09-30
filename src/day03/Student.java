@@ -9,31 +9,63 @@ package day03;
  * - getter/setter
  * 
  */
-class EzenStudent {
-	private String locate, name, course, phone;
-
-	public EzenStudent() {
+/* 객체를 생성시 값을 초기화 하는 방법
+ * - 기본값, 명시적 초기값, 초기화 블럭
+ * 1. 기본값 : 기본적으로 지정되는 값 int = 0 / String = null
+ * 2. 명시적 초기값 : 사용자가 멤버변수를 선언함과 동시에 값을 지정
+ * 3. 초기화 블럭 : { } 멤버변수들의 초기화
+ * 4. 생성자 : 객체 생성시 초기화를 해서 생성
+ * 
+ * 초기값의 우선순위(순위가 높은 값으로 덮어쓰여짐)
+ * 기본값 -> 명시적 초기값 -> 초기화 블럭 -> 생성자
+ */
+public class Student {
+	private String locate = "incheon"; 	//명시적 초기값
+	private String name; //기본값 기본적으로 주는 null / 0의 값
+	private String course;
+	private String phone;
+	{
+		//초기화 블럭 영역
+		name = "student";
+		course = "JAVA";
+		phone = "010-0000-0000";
 	}
 
-	public EzenStudent(String locate, String name) {
+	public Student() { //기본생성자
+		name = "student";
+		course = "JAVA";
+	}
+
+	public Student(String locate, String name) {
 		this.locate = locate;
 		this.name = name;
 	}
 
-	public EzenStudent(String locate, String name, String course, String phone) {
+	public Student(String locate, String name, String course, String phone) {
 		this(locate, name);
 		this.course = course;
 		this.phone = phone;
 	}
 
 	public void print() {
-		System.out.println("--학생정보--");
 		System.out.println(name+"(" + phone + ") - "  + course + " (지점: " + locate + ")" );
 	}
 
+	//객체의 내용을 출력하는 메서드(toString)
+	// @Override : 어노테이션(애너테이션) =? 작은 기능이 있는 정의어
+	// override(오버라이드) : 부모의 메서드를 자식이 가져와서 재정의 하는 기능
+	// 생성자, getter/setter, toString => 자동생성해줌.
+	// 마우스 우클릭 => Source => Generate toString()...
+	@Override
+	public String toString() {
+		return "Student [locate=" + locate + ", name=" + name + ", course=" + course + ", phone=" + phone + "]";
+	}
+	
+	
 	public String getLocate() {
 		return locate;
 	}
+
 
 	public void setLocate(String locate) {
 		this.locate = locate;
@@ -62,20 +94,4 @@ class EzenStudent {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-}
-
-public class Student {
-	public static void main(String[] args) {
-		EzenStudent st1 = new EzenStudent("인천", "홍길동");
-		st1.print();
-		st1.setCourse("AWS 활용 풀스택 개발자 양성 과정");
-		st1.setPhone("010-1234-5678");
-		st1.print();
-
-		EzenStudent st2 = new EzenStudent("서울", "김영희", "전산회계", "010-1111-2222");
-		st2.print();
-
-		
-	}
-
 }
