@@ -8,7 +8,8 @@ public interface Program {
 	
 	void insertStudent(Scanner scan);
 	void printStudent();
-	void searchStudent(Scanner scan);
+	//학생을 검색후 해당 번지를 리턴
+	int searchStudent(Scanner scan);
 	void modifyStudent(Scanner scan);
 	void deleteStudent(Scanner scan);
 	void registerSubject(Scanner scan);

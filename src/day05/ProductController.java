@@ -59,7 +59,7 @@ public class ProductController { // 컨트롤러는 생성자가 필요 없음.
 		System.out.println("삭제할 상품명>");
 		String deleteName = scan.next();
 		int index = -1; // 없는 번지를 기본값으로 설정
-		for (int i = 0; i < cnt; i++) {
+		for (int i=0; i<cnt; i++) {
 			if (menu[i].getName().equals(deleteName)) {
 				index = i;
 				break;
@@ -68,7 +68,7 @@ public class ProductController { // 컨트롤러는 생성자가 필요 없음.
 
 		if (index == -1) {
 			// deteleName을 못찾았을 경우
-			System.out.println("찾는 과목이 없습니다.");
+			System.out.println("찾는 상품이 없습니다.");
 			return;
 		}
 		// 삭제 : 찾은 위치부터 뒷번지를 앞번지로 옮기는 작업
