@@ -2,15 +2,17 @@ package lotto;
 
 public class LottoExtend extends Lotto {
 	// Lotto 클래스를 상속받아서 보너스 처리만 하면 됨.
-	private int bonus;	//보너스 번호만 있으면 됨.
+	private int bonus; //보너스 번호만 있으면 됨.
 
 	@Override
 	protected void randomLotto() {
+		// 기존 numbers 6자리 배열 채우기는 이미 완성
+		//기존 번호에 중복없이 보너스 번호 생성
 		super.randomLotto();
 		while(true) {
 			int r = random();
 			if(!isContain(r)) {
-				bonus = r;
+				bonus= r;
 				break;
 			}
 		}
@@ -19,15 +21,15 @@ public class LottoExtend extends Lotto {
 	@Override
 	protected void init() {
 		// 배열 초기화
-		super.init(); //numbers 배열을 새로 만들어놓은 상태
+		super.init(); //numbers 배열을 새로만들어 놓은 상태
 		bonus = 0;
 	}
 
 	@Override
 	protected void insertNumbers(int[] arr) {
 		// 가져온 번호가 7자리일 경우...
-		super.insertNumbers(arr);	//6자리만 넣기
-		this.bonus = arr[numbers.length];	//6번지 채우기 나머지는 버리기
+		super.insertNumbers(arr); //6자리만 넣기
+		this.bonus = arr[numbers.length]; //6번지 채우기 나머지는 버리기
 	}
 	
 	protected void insertNumbers(int[] arr, int bonus) {
@@ -38,6 +40,7 @@ public class LottoExtend extends Lotto {
 
 	@Override
 	public String toString() {
+		// TODO Auto-generated method stub
 		return super.toString()+"["+bonus+"]";
 	}
 
@@ -51,49 +54,4 @@ public class LottoExtend extends Lotto {
 	
 	
 	
-	
-	
-	
-	
-	
-//	private int bonus; 
-//
-//	public LottoExtend(int round) {
-//		super(round);
-//	}
-//
-//	public void printLotto(){
-//		System.out.print(getRound() + "회차 "); 
-//	    for (int i=0; i<getNums().length; i++) {
-//	        System.out.print(getNums()[i]);
-//	        if (i<getNums().length-1) {
-//	            System.out.print(" ");
-//	        }
-//	    }
-//	    System.out.println();
-//	}
-//	
-//	public void addWinNum(Scanner scan) {
-//        createHandNum(scan);
-//        System.out.print("보너스 번호 입력(1~45) > ");
-//        int bonus = scan.nextInt();
-//        setBonus(bonus);
-//    }
-//	
-//	@Override
-//	public String toString() {
-//		return "LottoExtend [bonus=" + bonus + "]";
-//	}
-//
-//	public void setBonus(int bonus) {
-//		this.bonus = bonus;
-//	}
-//	
-//	public int getBonus() {
-//		return bonus;
-//	}
-
-
-	
-
 }
