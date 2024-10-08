@@ -16,6 +16,10 @@ public class Exception03 {
 			System.out.println(arr[i]);
 		}
 
+		// Checked Exception과 Unchecked Exception의 차이점 중 중요한 것은
+		// 예외 발생시 트랜잭션 처리
+		// 체크예외 : 한번 체크를 했기 때문에 롤백이 되지 않고 커밋까지 완료 됨.
+		// 언체크 예외 : 롤백이 됨.
 	}
 
 }
