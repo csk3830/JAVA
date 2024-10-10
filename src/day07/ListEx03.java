@@ -13,10 +13,14 @@ public class ListEx03 {
 		 * */
 		String num = "45,78,98,65,84,52,64,31";
 		String[] arr = num.split(",");
+		
+		// 문자를 숫자로 변환 한 후 리스트에 넣기
+		List<Integer> list = new ArrayList<>();
+		
+		
         int sum=0;
         int pass=0;
 		
-		List<Integer> list = new ArrayList<>();
 
         for(String s:arr) {
         	list.add(Integer.parseInt(s));
