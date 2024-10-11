@@ -11,6 +11,14 @@ public class SaleController {
 	List<SaleMenu> saleMenu = new ArrayList<>();
 	List<SaleOrder> saleOrder = new ArrayList<>();
 
+	public void dataMenu() {
+		saleMenu.add(new SaleMenu("라면", 5500));
+		saleMenu.add(new SaleMenu("김밥", 3000));
+		saleMenu.add(new SaleMenu("쫄면", 6000));
+		saleMenu.add(new SaleMenu("돈까스", 8000));
+		saleMenu.add(new SaleMenu("만두", 6000));
+	}
+	
 	public void addMenu(Scanner scan) {
 		System.out.print("추가할 메뉴명 입력 >> ");
 		String productName = scan.next();
@@ -40,6 +48,7 @@ public class SaleController {
 	}
 
 	public void printMenu() {
+		System.out.println("----메뉴목록----");
 		if(saleMenu.isEmpty()) {
 			System.out.println("현재 등록된 메뉴가 없습니다.");
 		}else {
@@ -82,12 +91,11 @@ public class SaleController {
 	}
 	
 	public void printOrder() {
-		System.out.println("현재 주문 수: " + saleOrder.size());
 	    if (saleOrder.isEmpty()) {
 	        System.out.println("주문 내역이 없습니다.");
 	        return;
 	    }
-	   
+	    System.out.println("----주문내역----");
 	    for (SaleOrder o : saleOrder) {
 	    	System.out.println(
 	    			"주문번호:"+o.getOrderId()+"\n"
