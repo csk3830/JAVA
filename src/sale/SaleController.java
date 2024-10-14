@@ -11,7 +11,6 @@ public class SaleController {
 	private int orderListindex;
 	
 	private List<Menu> menu = new ArrayList<>();
-//	private List<Order> order = new ArrayList<>();
 	private List<OrderList> orderList = new ArrayList<>();
 	
 	public void addMenu() {
@@ -85,7 +84,6 @@ public class SaleController {
 		this.orderList.add(new OrderList((orderListindex+1))); //가장 마지막에 
 		int or =-1;
 		do{
-			
 		
 		System.out.println("주문메뉴번호 >");
 		int pickMenu = scan.nextInt();
@@ -115,13 +113,14 @@ public class SaleController {
 		this.orderList.get(orderListindex).addOrder(order);
 		
 		System.out.println("주문여부(1/0) >");
-		 or = scan.nextInt();
+		or = scan.nextInt();
 		
 		}while(or == 1);
 				
 		orderListindex++;
 		System.out.println("주문완료~!!");
 	}
+	
 	public void orderPrint(Scanner scan) {
 		// 주문 출력
 		int sum = 0;
@@ -135,6 +134,7 @@ public class SaleController {
 		System.out.println("총지불금액 : "+sum);
 		
 	}
+	
 	public void totalOrderPrint() {
 		
 		System.out.println("준비중입니다...");

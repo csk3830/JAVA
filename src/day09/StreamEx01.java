@@ -1,6 +1,7 @@
 package day09;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -45,34 +46,43 @@ public class StreamEx01 {
 		.sum();
 		System.out.println("총 여행경비:"+sum);
 		
-		System.out.println("--20세 이상 고객명단--");
+		Collections.sort(ct);	// 클래스에 정렬이 구현되어 있을경우 사용가능
+		
+		System.out.println("--20세 이상(이름 가나다순)--");
+		
 		ct.stream()
 		.filter(n->n.getAge()>=20)
-		.sorted(new Comparator<Customer>() {
-
-			@Override
-			public int compare(Customer o1, Customer o2) {
-				return o1.getName().compareTo(o2.getName());
-			}
-			
-		}).forEach(System.out::println);
+		//Comparator 구현이 없는 경우
+//		.sorted(new Comparator<Customer>() {
+//
+//			@Override
+//			public int compare(Customer o1, Customer o2) {
+//				return o1.getName().compareTo(o2.getName());
+//			}
+//			
+//		})
+		.sorted()	// Comparator를 기존 클래스에서 구현
+		.forEach(System.out::println);
 		
-	
+		//익명클래스 사용할 경우 Comparator 대상값이 (매개변수가 2개)
+		//클래스 내부에서 구현할 경우 Comparable 대상값이 (매개변수 1개)
 
 	}
 
 }
-class Customer{
+class Customer implements Comparable<Customer> {
+	//멤버변수 : 각 인원마다 가져야 할 고유 값
 	private String name;
 	private int age;
 	private int cost;
 	
-	public Customer() {}
+	//생성자
 	public Customer(String name, int age) {
 		this.name = name;
 		this.age = age;
 		this.cost = age<=15 ? 100 : 50;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -95,6 +105,12 @@ class Customer{
 	@Override
 	public String toString() {
 		return "이름:" + name + " 나이:" + age + " 비용:" + cost ;
+	}
+
+	@Override
+	public int compareTo(Customer o) {
+		// this와 o객체를 정렬
+		return this.name.compareTo(o.name);
 	}
 	
 }
