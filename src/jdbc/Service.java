@@ -8,4 +8,10 @@ public interface Service {
 
 	List<Product> getList();
 
+	Product getProduct(int pno);
+
+	int update(Product p);
+
+	int delete(int pno);
+
 }

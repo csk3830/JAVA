@@ -17,6 +17,7 @@ public class Exception05 {
 			System.out.println(name);
 			br.close();
 			isr.close();
+			name = br.readLine();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
