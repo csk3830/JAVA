@@ -9,14 +9,12 @@ flush privileges;
 use javadb;
 
 create table student(
-sno int auto_increment,
+sno int auto_increment;
 sname varchar(50) not null,
 birth varchar(50),
 phone varchar(50),
 address varchar(50),
 regdate datetime default now(),
 primary key(sno));
-
-ALTER TABLE student AUTO_INCREMENT = 240001;
 
 -- DB는 수정되거나 추가되면 변경구문을 써놔야 함.
