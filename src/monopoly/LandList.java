@@ -7,8 +7,6 @@ public class LandList {
 	private List<Land> landList; 	//Land 객체들 저장
 	private HotelList hotelList;
 	
-	public LandList() {}
-	
 	public LandList(HotelList hotelList) {
 		this.hotelList = hotelList;
 		this.landList = new ArrayList<Land>();
